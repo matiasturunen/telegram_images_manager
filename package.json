@@ -1,69 +1,39 @@
 {
-  "name": "imagetty_manager",
+  "name": "telegram_images_manager",
   "version": "1.0.0",
-  "description": "imagetty_manager",
-  "keywords": [
-    "loopback-application",
-    "loopback"
-  ],
+  "description": "",
   "main": "index.js",
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
-    "build": "lb-tsc",
-    "build:watch": "lb-tsc --watch",
-    "clean": "lb-clean dist *.tsbuildinfo",
-    "lint": "npm run prettier:check && npm run eslint",
-    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
-    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
-    "prettier:check": "npm run prettier:cli -- -l",
-    "prettier:fix": "npm run prettier:cli -- --write",
-    "eslint": "lb-eslint --report-unused-disable-directives .",
-    "eslint:fix": "npm run eslint -- --fix",
-    "pretest": "npm run clean && npm run build",
-    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
-    "posttest": "npm run lint",
-    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
-    "migrate": "node ./dist/migrate",
-    "prestart": "npm run build",
-    "start": "node -r source-map-support/register .",
-    "prepublishOnly": "npm run test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "git+https://github.com/matiasturunen/telegram_images_manager.git"
   },
   "author": "",
-  "license": "",
-  "files": [
-    "README.md",
-    "index.js",
-    "index.d.ts",
-    "dist",
-    "src",
-    "!*/__tests__"
-  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matiasturunen/telegram_images_manager/issues"
+  },
+  "homepage": "https://github.com/matiasturunen/telegram_images_manager#readme",
   "dependencies": {
-    "@loopback/boot": "^2.0.0",
-    "@loopback/context": "^3.0.0",
-    "@loopback/core": "^2.0.0",
-    "@loopback/openapi-v3": "^3.0.0",
-    "@loopback/rest": "^3.0.0",
-    "@loopback/rest-explorer": "^2.0.0",
-    "tslib": "^1.10.0"
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "pg-promise": "^10.4.4"
   },
   "devDependencies": {
-    "@loopback/build": "^4.0.0",
-    "source-map-support": "^0.5.16",
-    "@loopback/testlab": "^2.0.0",
-    "@types/node": "^10.17.17",
-    "@typescript-eslint/parser": "^2.22.0",
-    "@typescript-eslint/eslint-plugin": "^2.22.0",
-    "@loopback/eslint-config": "^6.0.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-eslint-plugin": "^2.2.1",
-    "eslint-plugin-mocha": "^6.3.0",
-    "typescript": "~3.8.3"
+    "mocha": "^7.1.0",
+    "supertest": "^4.0.2"
   }
 }
