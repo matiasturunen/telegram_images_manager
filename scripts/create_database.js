@@ -18,13 +18,23 @@ export function createDatabase() {
                   id SERIAL PRIMARY KEY,\
                   username TEXT NOT NULL UNIQUE,\
                   password TEXT NOT NULL,\
-                  email TEXT UNIQUE,\
+                  email TEXT UNIQUE\
               );\
-              CREATE TABLE access_token(\
+              CREATE TABLE access_token (\
                   id SERIAL PRIMARY KEY,\
                   token TEXT NOT NULL,\
                   expires DATE,\
                   user_id INT REFERENCES users(id)\
+              );\
+              CREATE TABLE photo (\
+                id SERIAL PRIMARY KEY,\
+                filename TEXT NOT NULL UNIQUE,\
+                ownername TEXT NOT NULL,\
+                chattype TEXT NOT NULL,\
+                chatname TEXT NOT NULL,\
+                created INT,\
+                caption TEXT NOT NULL,\
+                visible INT NOT NULL DEFAULT 1\
               );\
               COMMIT;';
 

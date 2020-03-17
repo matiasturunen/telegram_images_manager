@@ -14,6 +14,7 @@ export function dropTables() {
   const sql = 'BEGIN;\
                   DROP TABLE IF EXISTS access_token;\
                   DROP TABLE IF EXISTS users;\
+                  DROP TABLE IF EXISTS photo;\
               COMMIT;';
   return db.none(sql);
 }

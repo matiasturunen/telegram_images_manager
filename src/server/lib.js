@@ -1,7 +1,5 @@
 import Promise from 'bluebird';
 import bcrypt from 'bcryptjs';
-import * as db from './db';
-import _ from 'lodash';
 
 export function createErrorPromise(message, status) {
   const err = new Error(message);

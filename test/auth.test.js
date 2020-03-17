@@ -13,10 +13,10 @@ chai.use(chaiAsPromised);
 function createUser(user) {
 
   return create_user(
-      user.username,
-      user.password,
-      user.email
-    ).catch(err => console.log(err));
+    user.username,
+    user.password,
+    user.email
+  ).catch(err => console.log(err));
 }
 
 const user1 = {

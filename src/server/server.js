@@ -2,8 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import * as auth from './auth';
 import * as db from './db';
-import _ from 'lodash';
-import Promise from 'bluebird';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -68,3 +66,8 @@ app.post('/api/logout', auth.ensureAuthorized, (req, res) => {
     .then(() => res.sendStatus(200))
     .catch(err => customOr500(err, res));
 });
+
+app.listen(port, () => console.log(`Checklist app listening on port ${port}!`));
+
+// export app to use it somewhere else
+export default app;
