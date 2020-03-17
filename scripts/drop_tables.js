@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
 export function dropTables() {
   const pgp = pg();
 
-  const dburl = process.env.DATABASE_URL || 'postgres://matias:matias@127.0.0.1:5432/api';
+  const dburl = process.env.DATABASE_URL;
   const db = pgp(dburl);
 
   const sql = 'BEGIN;\

@@ -5,7 +5,7 @@ import { createErrorPromise } from './lib';
 
 import { cryptPassword } from './lib';
 
-const dburl = process.env.DATABASE_URL || 'postgres://matias:matias@127.0.0.1:5432/api';
+const dburl = process.env.DATABASE_URL;
 const pgp = pg();
 
 const db = pgp(dburl);

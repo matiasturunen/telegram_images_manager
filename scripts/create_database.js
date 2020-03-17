@@ -10,7 +10,7 @@ export function createDatabase() {
 
   const dblib = require('../src/server/db.js');
 
-  const dburl = process.env.DATABASE_URL || 'postgres://matias:matias@127.0.0.1:5432/api';
+  const dburl = process.env.DATABASE_URL;
   const db = pgp(dburl);
 
   const sql1 = 'BEGIN;\
