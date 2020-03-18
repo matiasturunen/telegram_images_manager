@@ -9,7 +9,8 @@
     "create-database": "babel-node scripts/create_database.js",
     "reset-database": "babel-node scripts/drop_tables.js && npm run create-database",
     "linter": "eslint --ext js src test scripts",
-    "test-mocha": "mocha --require babel-register ./test --recursive"
+    "test-mocha": "mocha --require babel-register ./test --recursive",
+    "login-user": "babel-node scripts/loginuser.js"
   },
   "repository": {
     "type": "git",

@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import * as auth from './auth';
 import * as db from './db';
+import { createErrorPromise } from './lib';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -64,6 +65,35 @@ app.post('/api/logout', auth.ensureAuthorized, (req, res) => {
   db.findUserWithToken(req.accessToken)
     .then(user => auth.logoutUser(user))
     .then(() => res.sendStatus(200))
+    .catch(err => customOr500(err, res));
+});
+
+/*
+ * Photos management
+ */
+
+// Post new photo (bot only)
+app.post('/api/photo', auth.ensureAuthorized, (req, res) => {
+  db.findUserWithToken(req.accessToken)
+    .then(user => {
+      //res.sendStatus(304);
+      if (user.username == 'bot') {
+        return db.createPhoto({
+          filename: req.body.filename,
+          ownername: req.body.ownername,
+          chattype: req.body.chattype,
+          chatname: req.body.chatname,
+          created: req.body.created,
+          caption: req.body.caption,
+          visible: req.body.visible,
+          chatid: req.body.chatid,
+          ownerid: req.body.ownerid,
+        });
+      } else {
+        return createErrorPromise('Invalid credettntials', 401);
+      }
+    })
+    .then(photo => res.send(photo))
     .catch(err => customOr500(err, res));
 });
 

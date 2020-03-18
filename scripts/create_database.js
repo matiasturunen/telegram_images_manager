@@ -34,12 +34,15 @@ export function createDatabase() {
                 chatname TEXT NOT NULL,\
                 created INT,\
                 caption TEXT NOT NULL,\
-                visible INT NOT NULL DEFAULT 1\
+                visible INT NOT NULL DEFAULT 1,\
+                chatid INT,\
+                ownerid INT\
               );\
               COMMIT;';
 
   return db.none(sql1)
-    .then(() => dblib.create_user('admin', process.env.ADMIN_PASS || '', '')); // Create admin with password from env var. Or leave empty for generated random password
+    .then(() => dblib.create_user('admin', process.env.ADMIN_PASS || '', 'admin_mail@example.com')) // Create admin with password from env var. Or leave empty for generated random password
+    .then(() => dblib.create_user('bot', '', 'bot_mail@example.com')); // user for the bot to create photos
 }
 
 if (require.main === module) {

@@ -7,7 +7,7 @@ function isEmptyStr(str) {
   return (!str || str == '');
 }
 
-function createAccesstoken(user, lifetime) {
+export function createAccesstoken(user, lifetime) {
   const timeNow = new Date();
   const expires = new Date(timeNow.getTime() + (lifetime * 1000));
 
@@ -110,14 +110,4 @@ export function logoutUser(user) {
   }
 
   return db.deleteAccesstokensForUser(user.id);
-}
-
-export function checkIfAdmin(user) {
-  return db.getUserRole(user.id)
-    .then(role => {
-      if (role.name == 'admin') {
-        return Promise.resolve();
-      }
-      return createErrorPromise('Invalid credentials', 401);
-    });
 }

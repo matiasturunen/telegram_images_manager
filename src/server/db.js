@@ -72,3 +72,20 @@ export function findUserWithToken(access_token) {
 
   return db.one(sql, [access_token.token]);
 }
+
+export function createPhoto(photo) {
+  const sql = 'INSERT INTO photo (filename, ownername, chattype, chatname, created, caption, visible, chatid, ownerid) \
+    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING id;';
+
+  return db.one(sql, [
+    photo.filename,
+    photo.ownername,
+    photo.chattype,
+    photo.chatname,
+    photo.created,
+    photo.caption,
+    photo.visible,
+    photo.chatid,
+    photo.ownerid,
+  ]);
+}
